@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Materia Prima</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 30px; 
+            background-color: #f4f6f9; 
+            color: #333; 
+        }
+        h1 { 
+            color: #2c3e50; 
+        }
+        .form-container { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+            max-width: 500px; 
+            margin-bottom: 30px; 
+        }
+        .form-group { 
+            margin-bottom: 15px; 
+        }
+        .form-group label { 
+            display: block; 
+            font-weight: bold; 
+            margin-bottom: 5px; 
+        }
+        .form-group input, .form-container textarea, .form-container select { 
+            width: 100%; 
+            padding: 8px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+        }
+        button { 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold; 
+        }
+        #btn-guardar { 
+            background-color: #2ecc71; 
+            color: white; 
+        }
+        #btn-nuevo { 
+            background-color: #95a5a6; 
+            color: white; 
+            margin-left: 10px; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: white; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+            margin-top: 20px;
+        }
+        th, td { 
+            padding: 12px; 
+            text-align: left; 
+            border-bottom: 1px solid #ddd; 
+        }
+        th { 
+            background-color: #34495e; 
+            color: white; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gestión de Órdenes de Producción y Materia Prima</h1>
+
+    <div class="form-container">
+        <div class="form-group">
+            <label for="titulo">Orden de Producción / Insumo:</label>
+            <input type="text" id="titulo" placeholder="Ej: Amasado de Lote - Pan de Naranja">
+        </div>
+        
+        <div class="form-group">
+            <label for="descripcion">Detalle de Insumos / Cantidades / Lote:</label>
+            <textarea id="descripcion" rows="3" placeholder="Ej: Se utilizan 50KG de Harina..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="estado">Estado del Proceso:</label>
+            <select id="estado">
+                <option value="pendiente">Pendiente (En Bodega)</option>
+                <option value="en progreso">En Progreso (Línea de Planta)</option>
+                <option value="completada">Completada (Procesado)</option>
+            </select>
+        </div>
+        
+        <button type="button" id="btn-guardar" onclick="saveTask()">Registrar en Planta</button>
+        <button type="button" id="btn-nuevo" onclick="clearForm()">Nueva Orden</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID Registro (UUID)</th>
+                <th>Orden / Insumo</th>
+                <th>Detalles de Control Técnico</th>
+                <th>Estado Actual</th>
+                <th>Fecha de Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tasks-list"></tbody>
+    </table>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>
